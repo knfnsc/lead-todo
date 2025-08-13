@@ -1,0 +1,16 @@
+<button (click)="createItem()" style="margin-bottom: 16px">Criar</button>
+<li>
+  <div style="margin-bottom: 8px" *ngFor="let item of items">
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="item.title"
+      style="margin: 0"
+    />
+    <input type="checkbox" [(ngModel)]="item.done" />
+    <button id="save" (click)="onSave(item.id, item.title, item.done)">
+      Salvar
+    </button>
+    <button id="delete" (click)="deleteItem(item.id)">Apagar</button>
+  </div>
+</li>

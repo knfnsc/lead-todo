@@ -1,0 +1,17 @@
+#save,
+#delete {
+  padding: 4px;
+
+  border: 0px;
+  color: whitesmoke;
+}
+
+#save {
+  margin: 0 6px;
+
+  background-color: green;
+}
+
+#delete {
+  background-color: red;
+}
