@@ -26,11 +26,11 @@ export class ItemComponent implements OnInit {
   }
 
   createItem(): void {
-    const newID =
-      this.items.length === 0 // Se a lista for vazia
-        ? 0 // ...retorna 0 como índice,
-        : Math.max(...this.items.map((item) => item.id)) + 1; // ...se não, pega o maior índice e soma 1.
-    this.items.push({ id: newID, title: 'Coisa', done: false });
+    const itemsIsEmpty = this.items.length === 0;
+    const newID = itemsIsEmpty // Se a lista for vazia
+      ? 0 // ...retorna 0 como índice,
+      : Math.max(...this.items.map((item) => item.id)) + 1; // ...se não, pega o maior índice e soma 1.
+    this.items.push({ id: newID, title: `Item ${newID + 1}`, done: false });
 
     localStorage.setItem('items', JSON.stringify(this.items));
   }
