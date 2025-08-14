@@ -14,9 +14,6 @@ type Item = {
 export class ItemComponent implements OnInit {
   items: Item[] = [];
 
-  title: string = 'Coisa';
-  done: boolean = false;
-
   ngOnInit(): void {
     const existingItems = localStorage.getItem('items');
 
@@ -46,12 +43,8 @@ export class ItemComponent implements OnInit {
   }
 
   onSave(modifiedItem: Item): void {
-    const modifiedItemIndex = this.indexFromID(modifiedItem.id);
-    this.items[modifiedItemIndex] = {
-      id: modifiedItem.id,
-      title: modifiedItem.title,
-      done: modifiedItem.done,
-    };
+    const itemIndex = this.indexFromID(modifiedItem.id);
+    this.items[itemIndex] = modifiedItem;
 
     localStorage.setItem('items', JSON.stringify(this.items));
   }

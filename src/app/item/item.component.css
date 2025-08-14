@@ -1,9 +1,28 @@
+input[type="text"] {
+  padding: 4px;
+
+  font-size: medium;
+  border: none;
+}
+
+input[type="text"]:focus {
+  background-color: whitesmoke;
+  border-radius: 6px;
+  outline: none;
+}
+
 #save,
 #delete {
   padding: 4px;
 
   border: 0px;
+  border-radius: 6px;
   color: whitesmoke;
+}
+
+#save:active,
+#delete:active {
+  box-shadow: inset 0px 0px 8px #fff;
 }
 
 #save {
