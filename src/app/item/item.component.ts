@@ -42,9 +42,8 @@ export class ItemComponent implements OnInit {
     localStorage.setItem('items', JSON.stringify(this.items));
   }
 
-  onSave(modifiedItem: Item): void {
-    const itemIndex = this.indexFromID(modifiedItem.id);
-    this.items[itemIndex] = modifiedItem;
+  onSave(modifiedItems: Item[]): void {
+    this.items = modifiedItems;
 
     localStorage.setItem('items', JSON.stringify(this.items));
   }

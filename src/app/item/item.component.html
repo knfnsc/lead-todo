@@ -1,10 +1,11 @@
-<button (click)="createItem()">Criar</button>
+<button id="create" (click)="createItem()">Criar</button>
 <ul>
-  <li style="margin-bottom: 8px" *ngFor="let item of items">
-    <input type="text" [(ngModel)]="item.title" />
+  <li *ngFor="let item of items">
     <input type="checkbox" [(ngModel)]="item.done" />
-
-    <button id="save" (click)="onSave(item)">Salvar</button>
+    <input type="text" [(ngModel)]="item.title" />
     <button id="delete" (click)="deleteItem(item.id)">Apagar</button>
   </li>
 </ul>
+<button id="save" (click)="onSave(items)" *ngIf="items.length !== 0">
+  Salvar
+</button>
