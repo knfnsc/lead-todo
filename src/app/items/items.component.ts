@@ -9,7 +9,7 @@ import { ItemService } from './item.service';
   styleUrls: ['./items.component.css'],
 })
 export class ItemsComponent implements OnInit, OnDestroy {
-  private destroy$ = new Subject<void>();
+  private readonly destroy$ = new Subject<void>();
   form: FormGroup;
   itemsForms: FormArray;
 
@@ -23,7 +23,8 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.itemService.getItems().forEach((item) => {
-      this.itemsForms.push(this.formBuilder.group(item));
+      const itemForm = this.formBuilder.group(item);
+      this.itemsForms.push(itemForm);
     });
 
     this.itemsForms.valueChanges
@@ -37,13 +38,12 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   onCreateClick(): void {
-    this.itemsForms.push(
-      this.formBuilder.group({
-        id: this.itemService.getItems().length,
-        title: '',
-        done: false,
-      })
-    );
+    const newItemForm = this.formBuilder.group({
+      id: this.itemService.nextID,
+      title: '',
+      done: false,
+    });
+    this.itemsForms.push(newItemForm);
   }
 
   onDeleteClick(id: number): void {

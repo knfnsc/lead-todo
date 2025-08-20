@@ -10,6 +10,10 @@ interface Item {
   providedIn: 'root',
 })
 export class ItemService {
+  get nextID(): number {
+    return this.getItems.length;
+  }
+
   getItems(): Item[] {
     return JSON.parse(localStorage.getItem('items') as string) || [];
   }
