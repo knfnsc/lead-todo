@@ -23,8 +23,7 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.itemService.getItems().forEach((item) => {
-      const itemForm = this.formBuilder.group(item);
-      this.itemsForms.push(itemForm);
+      this.itemsForms.push(this.formBuilder.group(item));
     });
 
     this.itemsForms.valueChanges
@@ -38,12 +37,13 @@ export class ItemsComponent implements OnInit, OnDestroy {
   }
 
   onCreateClick(): void {
-    const newItemForm = this.formBuilder.group({
-      id: this.itemService.nextID,
-      title: '',
-      done: false,
-    });
-    this.itemsForms.push(newItemForm);
+    this.itemsForms.push(
+      this.formBuilder.group({
+        id: this.itemService.nextID,
+        title: '',
+        done: false,
+      })
+    );
   }
 
   onDeleteClick(id: number): void {
