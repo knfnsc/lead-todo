@@ -1,0 +1,16 @@
+<button class="create" (click)="onCreateClick()">Criar</button>
+
+<form [formGroup]="form">
+  <ul [formArrayName]="'items'">
+    <li
+      *ngFor="let _ of itemsForms.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <input type="checkbox" formControlName="done" />
+      <input class="item-title" placeholder="Título" formControlName="title" />
+      <button class="delete" type="button" (click)="onDeleteClick(i)">
+        Apagar
+      </button>
+    </li>
+  </ul>
+</form>
