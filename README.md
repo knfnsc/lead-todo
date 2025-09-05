@@ -1,1 +1,1 @@
-O `interface Item` faz sentido somente dentro do `item.service.ts`, já que não é importado em outros arquivos.
+oi.
